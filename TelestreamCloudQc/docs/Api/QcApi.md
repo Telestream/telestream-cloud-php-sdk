@@ -1,4 +1,4 @@
-# TelestreamCloud\QcApi
+# TelestreamCloudQc\QcApi
 
 All URIs are relative to *https://api.cloud.telestream.net/qc/v1.0*
 
@@ -30,16 +30,21 @@ Method | HTTP request | Description
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: apiKey
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\QcApi();
+$apiInstance = new TelestreamCloudQc\Api\QcApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $project = "project_example"; // string | A unique identifier of a Project.
 $job = "job_example"; // string | A unique identifier of a Job.
 
 try {
-    $api_instance->cancelJob($project, $job);
+    $apiInstance->cancelJob($project, $job);
 } catch (Exception $e) {
     echo 'Exception when calling QcApi->cancelJob: ', $e->getMessage(), PHP_EOL;
 }
@@ -69,7 +74,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createJob**
-> \TelestreamCloud\Qc\Job createJob($project, $data)
+> \TelestreamCloudQc\Model\Job createJob($project, $data)
 
 Create a new job
 
@@ -79,16 +84,21 @@ Create a new job
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: apiKey
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\QcApi();
+$apiInstance = new TelestreamCloudQc\Api\QcApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $project = "project_example"; // string | A unique identifier of a Project.
-$data = new \TelestreamCloud\Qc\JobData(); // \TelestreamCloud\Qc\JobData | 
+$data = new \TelestreamCloudQc\Model\JobData(); // \TelestreamCloudQc\Model\JobData | 
 
 try {
-    $result = $api_instance->createJob($project, $data);
+    $result = $apiInstance->createJob($project, $data);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QcApi->createJob: ', $e->getMessage(), PHP_EOL;
@@ -101,11 +111,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project** | **string**| A unique identifier of a Project. |
- **data** | [**\TelestreamCloud\Qc\JobData**](../Model/JobData.md)|  |
+ **data** | [**\TelestreamCloudQc\Model\JobData**](../Model/JobData.md)|  |
 
 ### Return type
 
-[**\TelestreamCloud\Qc\Job**](../Model/Job.md)
+[**\TelestreamCloudQc\Model\Job**](../Model/Job.md)
 
 ### Authorization
 
@@ -119,7 +129,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createProject**
-> \TelestreamCloud\Qc\Project createProject($data)
+> \TelestreamCloudQc\Model\Project createProject($data)
 
 Create a new project
 
@@ -129,15 +139,20 @@ Create a new project
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: apiKey
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\QcApi();
-$data = new \TelestreamCloud\Qc\Data(); // \TelestreamCloud\Qc\Data | 
+$apiInstance = new TelestreamCloudQc\Api\QcApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$data = new \TelestreamCloudQc\Model\Data(); // \TelestreamCloudQc\Model\Data | 
 
 try {
-    $result = $api_instance->createProject($data);
+    $result = $apiInstance->createProject($data);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QcApi->createProject: ', $e->getMessage(), PHP_EOL;
@@ -149,11 +164,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**\TelestreamCloud\Qc\Data**](../Model/Data.md)|  | [optional]
+ **data** | [**\TelestreamCloudQc\Model\Data**](../Model/Data.md)|  | [optional]
 
 ### Return type
 
-[**\TelestreamCloud\Qc\Project**](../Model/Project.md)
+[**\TelestreamCloudQc\Model\Project**](../Model/Project.md)
 
 ### Authorization
 
@@ -167,7 +182,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getJob**
-> \TelestreamCloud\Qc\Job getJob($project, $job)
+> \TelestreamCloudQc\Model\Job getJob($project, $job)
 
 Get QC job
 
@@ -177,16 +192,21 @@ Get QC job
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: apiKey
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\QcApi();
+$apiInstance = new TelestreamCloudQc\Api\QcApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $project = "project_example"; // string | A unique identifier of a Project.
 $job = "job_example"; // string | A unique identifier of a Job.
 
 try {
-    $result = $api_instance->getJob($project, $job);
+    $result = $apiInstance->getJob($project, $job);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QcApi->getJob: ', $e->getMessage(), PHP_EOL;
@@ -203,7 +223,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Qc\Job**](../Model/Job.md)
+[**\TelestreamCloudQc\Model\Job**](../Model/Job.md)
 
 ### Authorization
 
@@ -217,7 +237,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getProject**
-> \TelestreamCloud\Qc\Project getProject($project)
+> \TelestreamCloudQc\Model\Project getProject($project)
 
 Get project by Id
 
@@ -227,15 +247,20 @@ Get project by Id
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: apiKey
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\QcApi();
+$apiInstance = new TelestreamCloudQc\Api\QcApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $project = "project_example"; // string | A unique identifier of a Project.
 
 try {
-    $result = $api_instance->getProject($project);
+    $result = $apiInstance->getProject($project);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QcApi->getProject: ', $e->getMessage(), PHP_EOL;
@@ -251,7 +276,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Qc\Project**](../Model/Project.md)
+[**\TelestreamCloudQc\Model\Project**](../Model/Project.md)
 
 ### Authorization
 
@@ -265,7 +290,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listJobs**
-> \TelestreamCloud\Qc\JobsCollection listJobs($project, $expand, $status, $per_page, $page)
+> \TelestreamCloudQc\Model\JobsCollection listJobs($project, $expand, $status, $per_page, $page)
 
 Get jobs form projects
 
@@ -275,11 +300,16 @@ Get jobs form projects
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: apiKey
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\QcApi();
+$apiInstance = new TelestreamCloudQc\Api\QcApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $project = "project_example"; // string | A unique identifier of a Project.
 $expand = true; // bool | Expand details of job
 $status = "status_example"; // string | Filter jobs by status
@@ -287,7 +317,7 @@ $per_page = 30; // int | Limit number of listed jobs
 $page = 56; // int | Index of jobs page to be listed
 
 try {
-    $result = $api_instance->listJobs($project, $expand, $status, $per_page, $page);
+    $result = $apiInstance->listJobs($project, $expand, $status, $per_page, $page);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QcApi->listJobs: ', $e->getMessage(), PHP_EOL;
@@ -307,7 +337,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Qc\JobsCollection**](../Model/JobsCollection.md)
+[**\TelestreamCloudQc\Model\JobsCollection**](../Model/JobsCollection.md)
 
 ### Authorization
 
@@ -321,7 +351,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listProjects**
-> \TelestreamCloud\Qc\Project[] listProjects()
+> \TelestreamCloudQc\Model\Project[] listProjects()
 
 List all projects for an account
 
@@ -331,14 +361,19 @@ List all projects for an account
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: apiKey
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\QcApi();
+$apiInstance = new TelestreamCloudQc\Api\QcApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 
 try {
-    $result = $api_instance->listProjects();
+    $result = $apiInstance->listProjects();
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QcApi->listProjects: ', $e->getMessage(), PHP_EOL;
@@ -351,7 +386,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\TelestreamCloud\Qc\Project[]**](../Model/Project.md)
+[**\TelestreamCloudQc\Model\Project[]**](../Model/Project.md)
 
 ### Authorization
 
@@ -365,7 +400,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **modifyProject**
-> \TelestreamCloud\Qc\Project modifyProject($project, $data)
+> \TelestreamCloudQc\Model\Project modifyProject($project, $data)
 
 Modify project
 
@@ -375,16 +410,21 @@ Modify project
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: apiKey
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\QcApi();
+$apiInstance = new TelestreamCloudQc\Api\QcApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $project = "project_example"; // string | 
-$data = new \TelestreamCloud\Qc\Data1(); // \TelestreamCloud\Qc\Data1 | 
+$data = new \TelestreamCloudQc\Model\Data1(); // \TelestreamCloudQc\Model\Data1 | 
 
 try {
-    $result = $api_instance->modifyProject($project, $data);
+    $result = $apiInstance->modifyProject($project, $data);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QcApi->modifyProject: ', $e->getMessage(), PHP_EOL;
@@ -397,11 +437,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project** | **string**|  |
- **data** | [**\TelestreamCloud\Qc\Data1**](../Model/Data1.md)|  | [optional]
+ **data** | [**\TelestreamCloudQc\Model\Data1**](../Model/Data1.md)|  | [optional]
 
 ### Return type
 
-[**\TelestreamCloud\Qc\Project**](../Model/Project.md)
+[**\TelestreamCloudQc\Model\Project**](../Model/Project.md)
 
 ### Authorization
 
@@ -415,7 +455,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **proxy**
-> \TelestreamCloud\Qc\Proxy proxy($project, $job)
+> \TelestreamCloudQc\Model\Proxy proxy($project, $job)
 
 
 
@@ -425,16 +465,21 @@ Name | Type | Description  | Notes
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: apiKey
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\QcApi();
+$apiInstance = new TelestreamCloudQc\Api\QcApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $project = "project_example"; // string | A unique identifier of a Project.
 $job = "job_example"; // string | A unique identifier of a Job.
 
 try {
-    $result = $api_instance->proxy($project, $job);
+    $result = $apiInstance->proxy($project, $job);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QcApi->proxy: ', $e->getMessage(), PHP_EOL;
@@ -451,7 +496,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Qc\Proxy**](../Model/Proxy.md)
+[**\TelestreamCloudQc\Model\Proxy**](../Model/Proxy.md)
 
 ### Authorization
 
@@ -475,16 +520,21 @@ Name | Type | Description  | Notes
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: apiKey
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\QcApi();
+$apiInstance = new TelestreamCloudQc\Api\QcApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $project = "project_example"; // string | A unique identifier of a Project.
 $job = "job_example"; // string | A unique identifier of a Job.
 
 try {
-    $api_instance->removeJob($project, $job);
+    $apiInstance->removeJob($project, $job);
 } catch (Exception $e) {
     echo 'Exception when calling QcApi->removeJob: ', $e->getMessage(), PHP_EOL;
 }
@@ -524,15 +574,20 @@ void (empty response body)
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: apiKey
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\QcApi();
+$apiInstance = new TelestreamCloudQc\Api\QcApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $project = "project_example"; // string | 
 
 try {
-    $api_instance->removeProject($project);
+    $apiInstance->removeProject($project);
 } catch (Exception $e) {
     echo 'Exception when calling QcApi->removeProject: ', $e->getMessage(), PHP_EOL;
 }
@@ -571,16 +626,21 @@ void (empty response body)
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: apiKey
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\QcApi();
+$apiInstance = new TelestreamCloudQc\Api\QcApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $project = "project_example"; // string | A unique identifier of a Project.
 $job = "job_example"; // string | A unique identifier of a Job.
 
 try {
-    $result = $api_instance->signedUrls($project, $job);
+    $result = $apiInstance->signedUrls($project, $job);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QcApi->signedUrls: ', $e->getMessage(), PHP_EOL;
@@ -597,7 +657,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**map[string,string]**](../Model/map.md)
+**map[string,string]**
 
 ### Authorization
 
@@ -611,7 +671,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **uploadVideo**
-> \TelestreamCloud\Qc\UploadSession uploadVideo($project, $video_upload_body)
+> \TelestreamCloudQc\Model\UploadSession uploadVideo($project, $video_upload_body)
 
 Creates an upload session
 
@@ -621,16 +681,21 @@ Creates an upload session
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: apiKey
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\QcApi();
+$apiInstance = new TelestreamCloudQc\Api\QcApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $project = "project_example"; // string | A unique identifier of a Project.
-$video_upload_body = new \TelestreamCloud\Qc\VideoUploadBody(); // \TelestreamCloud\Qc\VideoUploadBody | 
+$video_upload_body = new \TelestreamCloudQc\Model\VideoUploadBody(); // \TelestreamCloudQc\Model\VideoUploadBody | 
 
 try {
-    $result = $api_instance->uploadVideo($project, $video_upload_body);
+    $result = $apiInstance->uploadVideo($project, $video_upload_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QcApi->uploadVideo: ', $e->getMessage(), PHP_EOL;
@@ -643,11 +708,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project** | **string**| A unique identifier of a Project. |
- **video_upload_body** | [**\TelestreamCloud\Qc\VideoUploadBody**](../Model/VideoUploadBody.md)|  |
+ **video_upload_body** | [**\TelestreamCloudQc\Model\VideoUploadBody**](../Model/VideoUploadBody.md)|  |
 
 ### Return type
 
-[**\TelestreamCloud\Qc\UploadSession**](../Model/UploadSession.md)
+[**\TelestreamCloudQc\Model\UploadSession**](../Model/UploadSession.md)
 
 ### Authorization
 

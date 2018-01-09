@@ -31,8 +31,6 @@ class UploaderFileSession {
 
         $parts = $this->getMissingParts();
 
-        shuffle($parts);
-
         $session = $this->getSession();
 
         for ($i = 0; $i < $session['parts']; $i++) {
@@ -141,7 +139,7 @@ class Uploader
         $this->retryableUpload(5);
 
         if (!$this->result) {
-            throw new Exception("Missing upload result");
+            throw new \Exception("Missing upload result");
         }
 
         return $this->result['id'];
@@ -156,7 +154,7 @@ class Uploader
             }
 
             return true;
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             if ($attempt > 0) {
                 return $this->retryableUpload($attempt - 1);
             }
@@ -204,21 +202,38 @@ class Uploader
             )
         );
 
+        $payload = new Model\VideoUploadBody;
+        $payload->setFileSize($params['file_size']);
+        $payload->setFileName($params['file_name']);
+        $payload->setMultiChunk(true);
+
+        $extraFiles = array();
+
+        foreach ($params['extra_files'] as $index => $extraFileParams) {
+            $extraFiles[] = new Model\ExtraFile;
+            $extraFiles[$index]->setFileName($extraFileParams['file_name']);
+            $extraFiles[$index]->setFileSize($extraFileParams['file_size']);
+            $extraFiles[$index]->setTag($extraFileParams['tag']);
+        }
+
+        $payload->setExtraFiles($extraFiles);
+
+
         switch (get_class($this->client)) {
-        case "TelestreamCloud\Flip\FlipApi":
+        case "TelestreamCloudFlip\Api\FlipApi":
             if (!$this->factoryId) {
                 $this->factoryId = $params['factory_id'];
                 unset($params['factory_id']);
             }
 
-            return $this->client->uploadVideo($this->factoryId, $params);
-        case "TelestreamCloud\Qc\QcApi":
+            return $this->client->uploadVideo($this->factoryId, $payload);
+        default:
             if (!$this->factoryId) {
-                $this->factoryId = $params['factory_id'];
-                unset($params['factory_id']);
+                $this->factoryId = $params['project_id'];
+                unset($params['project_id']);
             }
 
-            return $this->client->uploadVideo($this->factoryId, $params);
+            return $this->client->uploadVideo($this->factoryId, $payload);
         }
     }
 }

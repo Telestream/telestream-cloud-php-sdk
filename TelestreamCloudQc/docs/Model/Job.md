@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **status** | **string** |  | [optional] 
 **duration** | **int** |  | [optional] 
 **type** | **string** |  | [optional] 
-**details** | [**\TelestreamCloud\Qc\JobDetails**](JobDetails.md) |  | [optional] 
+**details** | [**\TelestreamCloudQc\Model\JobDetails**](JobDetails.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

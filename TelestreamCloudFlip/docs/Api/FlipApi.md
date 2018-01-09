@@ -1,4 +1,4 @@
-# TelestreamCloud\FlipApi
+# TelestreamCloudFlip\FlipApi
 
 All URIs are relative to *https://api.cloud.telestream.net/api/flip/3.1*
 
@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**createEncoding**](FlipApi.md#createEncoding) | **POST** /encodings.json | Creates an Encoding
 [**createFactory**](FlipApi.md#createFactory) | **POST** /factories.json | Creates a new factory
 [**createProfile**](FlipApi.md#createProfile) | **POST** /profiles.json | Creates a Profile
+[**createVideo**](FlipApi.md#createVideo) | **POST** /videos.json | Creates a Video from a provided source_url.
 [**createWorkorder**](FlipApi.md#createWorkorder) | **POST** /workorders.json | Creates a Workorder.
 [**deleteEncoding**](FlipApi.md#deleteEncoding) | **DELETE** /encodings/{id}.json | Deletes an Encoding from both Telestream Cloud and your storage. Returns an information whether the operation was successful.
 [**deleteProfile**](FlipApi.md#deleteProfile) | **DELETE** /profiles/{id}.json | Deletes a given Profile
@@ -43,7 +44,7 @@ Method | HTTP request | Description
 
 
 # **cancelEncoding**
-> \TelestreamCloud\Flip\CanceledResponse cancelEncoding($id, $factory_id)
+> \TelestreamCloudFlip\Model\CanceledResponse cancelEncoding($id, $factory_id)
 
 Cancels an Encoding.
 
@@ -53,16 +54,21 @@ Cancels an Encoding.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = "id_example"; // string | Id of an Encoding.
 $factory_id = "factory_id_example"; // string | Id of a Factory.
 
 try {
-    $result = $api_instance->cancelEncoding($id, $factory_id);
+    $result = $apiInstance->cancelEncoding($id, $factory_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->cancelEncoding: ', $e->getMessage(), PHP_EOL;
@@ -79,7 +85,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Flip\CanceledResponse**](../Model/CanceledResponse.md)
+[**\TelestreamCloudFlip\Model\CanceledResponse**](../Model/CanceledResponse.md)
 
 ### Authorization
 
@@ -93,7 +99,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **copyProfile**
-> \TelestreamCloud\Flip\Profile copyProfile($id, $factory_id, $copy_profile_body, $expand)
+> \TelestreamCloudFlip\Model\Profile copyProfile($id, $factory_id, $copy_profile_body, $expand)
 
 Copies a given Profile
 
@@ -103,18 +109,23 @@ Copies a given Profile
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = "id_example"; // string | Id of a Profile.
 $factory_id = "factory_id_example"; // string | Id of a Factory.
-$copy_profile_body = new \TelestreamCloud\Flip\CopyProfileBody(); // \TelestreamCloud\Flip\CopyProfileBody | 
+$copy_profile_body = new \TelestreamCloudFlip\Model\CopyProfileBody(); // \TelestreamCloudFlip\Model\CopyProfileBody | 
 $expand = true; // bool | If expand option is set Profile objects will contain all command parameters, even if their value is default. By default this is not set.
 
 try {
-    $result = $api_instance->copyProfile($id, $factory_id, $copy_profile_body, $expand);
+    $result = $apiInstance->copyProfile($id, $factory_id, $copy_profile_body, $expand);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->copyProfile: ', $e->getMessage(), PHP_EOL;
@@ -128,12 +139,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| Id of a Profile. |
  **factory_id** | **string**| Id of a Factory. |
- **copy_profile_body** | [**\TelestreamCloud\Flip\CopyProfileBody**](../Model/CopyProfileBody.md)|  |
+ **copy_profile_body** | [**\TelestreamCloudFlip\Model\CopyProfileBody**](../Model/CopyProfileBody.md)|  |
  **expand** | **bool**| If expand option is set Profile objects will contain all command parameters, even if their value is default. By default this is not set. | [optional]
 
 ### Return type
 
-[**\TelestreamCloud\Flip\Profile**](../Model/Profile.md)
+[**\TelestreamCloudFlip\Model\Profile**](../Model/Profile.md)
 
 ### Authorization
 
@@ -147,7 +158,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createEncoding**
-> \TelestreamCloud\Flip\Encoding createEncoding($factory_id, $create_encoding_body, $screenshots, $precise_status)
+> \TelestreamCloudFlip\Model\Encoding createEncoding($factory_id, $create_encoding_body, $screenshots, $precise_status)
 
 Creates an Encoding
 
@@ -157,18 +168,23 @@ Creates an Encoding
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $factory_id = "factory_id_example"; // string | Id of a Factory.
-$create_encoding_body = new \TelestreamCloud\Flip\CreateEncodingBody(); // \TelestreamCloud\Flip\CreateEncodingBody | 
+$create_encoding_body = new \TelestreamCloudFlip\Model\CreateEncodingBody(); // \TelestreamCloudFlip\Model\CreateEncodingBody | 
 $screenshots = true; // bool | Determines whether the response will include screenshots. By default this is not set.
 $precise_status = true; // bool | Determines whether the response will include a precise status. By default this is not set.
 
 try {
-    $result = $api_instance->createEncoding($factory_id, $create_encoding_body, $screenshots, $precise_status);
+    $result = $apiInstance->createEncoding($factory_id, $create_encoding_body, $screenshots, $precise_status);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->createEncoding: ', $e->getMessage(), PHP_EOL;
@@ -181,13 +197,13 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **factory_id** | **string**| Id of a Factory. |
- **create_encoding_body** | [**\TelestreamCloud\Flip\CreateEncodingBody**](../Model/CreateEncodingBody.md)|  |
+ **create_encoding_body** | [**\TelestreamCloudFlip\Model\CreateEncodingBody**](../Model/CreateEncodingBody.md)|  |
  **screenshots** | **bool**| Determines whether the response will include screenshots. By default this is not set. | [optional]
  **precise_status** | **bool**| Determines whether the response will include a precise status. By default this is not set. | [optional]
 
 ### Return type
 
-[**\TelestreamCloud\Flip\Encoding**](../Model/Encoding.md)
+[**\TelestreamCloudFlip\Model\Encoding**](../Model/Encoding.md)
 
 ### Authorization
 
@@ -201,7 +217,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createFactory**
-> \TelestreamCloud\Flip\Factory createFactory($create_factory_body, $with_storage_provider)
+> \TelestreamCloudFlip\Model\Factory createFactory($create_factory_body, $with_storage_provider)
 
 Creates a new factory
 
@@ -211,16 +227,21 @@ Creates a new factory
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
-$create_factory_body = new \TelestreamCloud\Flip\FactoryBody(); // \TelestreamCloud\Flip\FactoryBody | 
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_factory_body = new \TelestreamCloudFlip\Model\FactoryBody(); // \TelestreamCloudFlip\Model\FactoryBody | 
 $with_storage_provider = true; // bool | if set to `true`, results will include a storage provider's id
 
 try {
-    $result = $api_instance->createFactory($create_factory_body, $with_storage_provider);
+    $result = $apiInstance->createFactory($create_factory_body, $with_storage_provider);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->createFactory: ', $e->getMessage(), PHP_EOL;
@@ -232,12 +253,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_factory_body** | [**\TelestreamCloud\Flip\FactoryBody**](../Model/FactoryBody.md)|  |
+ **create_factory_body** | [**\TelestreamCloudFlip\Model\FactoryBody**](../Model/FactoryBody.md)|  |
  **with_storage_provider** | **bool**| if set to &#x60;true&#x60;, results will include a storage provider&#39;s id | [optional]
 
 ### Return type
 
-[**\TelestreamCloud\Flip\Factory**](../Model/Factory.md)
+[**\TelestreamCloudFlip\Model\Factory**](../Model/Factory.md)
 
 ### Authorization
 
@@ -251,7 +272,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createProfile**
-> \TelestreamCloud\Flip\Profile createProfile($factory_id, $create_profile_body, $exclude_advanced_services, $expand)
+> \TelestreamCloudFlip\Model\Profile createProfile($factory_id, $create_profile_body, $exclude_advanced_services, $expand)
 
 Creates a Profile
 
@@ -261,18 +282,23 @@ Creates a Profile
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $factory_id = "factory_id_example"; // string | Id of a Factory.
-$create_profile_body = new \TelestreamCloud\Flip\ProfileBody(); // \TelestreamCloud\Flip\ProfileBody | 
+$create_profile_body = new \TelestreamCloudFlip\Model\ProfileBody(); // \TelestreamCloudFlip\Model\ProfileBody | 
 $exclude_advanced_services = true; // bool | 
 $expand = true; // bool | If expand option is set Profile objects will contain all command parameters, even if their value is default. By default it is not set.
 
 try {
-    $result = $api_instance->createProfile($factory_id, $create_profile_body, $exclude_advanced_services, $expand);
+    $result = $apiInstance->createProfile($factory_id, $create_profile_body, $exclude_advanced_services, $expand);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->createProfile: ', $e->getMessage(), PHP_EOL;
@@ -285,13 +311,68 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **factory_id** | **string**| Id of a Factory. |
- **create_profile_body** | [**\TelestreamCloud\Flip\ProfileBody**](../Model/ProfileBody.md)|  |
+ **create_profile_body** | [**\TelestreamCloudFlip\Model\ProfileBody**](../Model/ProfileBody.md)|  |
  **exclude_advanced_services** | **bool**|  | [optional]
  **expand** | **bool**| If expand option is set Profile objects will contain all command parameters, even if their value is default. By default it is not set. | [optional]
 
 ### Return type
 
-[**\TelestreamCloud\Flip\Profile**](../Model/Profile.md)
+[**\TelestreamCloudFlip\Model\Profile**](../Model/Profile.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **createVideo**
+> \TelestreamCloudFlip\Model\Video createVideo($factory_id, $create_video_body)
+
+Creates a Video from a provided source_url.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: api_key
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$factory_id = "factory_id_example"; // string | Id of a Factory.
+$create_video_body = new \TelestreamCloudFlip\Model\CreateVideoBody(); // \TelestreamCloudFlip\Model\CreateVideoBody | 
+
+try {
+    $result = $apiInstance->createVideo($factory_id, $create_video_body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling FlipApi->createVideo: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **factory_id** | **string**| Id of a Factory. |
+ **create_video_body** | [**\TelestreamCloudFlip\Model\CreateVideoBody**](../Model/CreateVideoBody.md)|  |
+
+### Return type
+
+[**\TelestreamCloudFlip\Model\Video**](../Model/Video.md)
 
 ### Authorization
 
@@ -315,18 +396,23 @@ Creates a Workorder.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $factory_id = "factory_id_example"; // string | Id of a Factory.
 $profile_id = "profile_id_example"; // string | Id of a Profile.
 $file = "/path/to/file.txt"; // \SplFileObject | Input file.
 $source_url = "source_url_example"; // string | URL pointing to an input file.
 
 try {
-    $api_instance->createWorkorder($factory_id, $profile_id, $file, $source_url);
+    $apiInstance->createWorkorder($factory_id, $profile_id, $file, $source_url);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->createWorkorder: ', $e->getMessage(), PHP_EOL;
 }
@@ -358,7 +444,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **deleteEncoding**
-> \TelestreamCloud\Flip\DeletedResponse deleteEncoding($id, $factory_id)
+> \TelestreamCloudFlip\Model\DeletedResponse deleteEncoding($id, $factory_id)
 
 Deletes an Encoding from both Telestream Cloud and your storage. Returns an information whether the operation was successful.
 
@@ -368,16 +454,21 @@ Deletes an Encoding from both Telestream Cloud and your storage. Returns an info
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = "id_example"; // string | Id of an Encoding.
 $factory_id = "factory_id_example"; // string | Id of a Factory.
 
 try {
-    $result = $api_instance->deleteEncoding($id, $factory_id);
+    $result = $apiInstance->deleteEncoding($id, $factory_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->deleteEncoding: ', $e->getMessage(), PHP_EOL;
@@ -394,7 +485,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Flip\DeletedResponse**](../Model/DeletedResponse.md)
+[**\TelestreamCloudFlip\Model\DeletedResponse**](../Model/DeletedResponse.md)
 
 ### Authorization
 
@@ -408,7 +499,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **deleteProfile**
-> \TelestreamCloud\Flip\DeletedResponse deleteProfile($id, $factory_id)
+> \TelestreamCloudFlip\Model\DeletedResponse deleteProfile($id, $factory_id)
 
 Deletes a given Profile
 
@@ -418,16 +509,21 @@ Deletes a given Profile
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = "id_example"; // string | Id of a Profile
 $factory_id = "factory_id_example"; // string | Id of a Factory.
 
 try {
-    $result = $api_instance->deleteProfile($id, $factory_id);
+    $result = $apiInstance->deleteProfile($id, $factory_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->deleteProfile: ', $e->getMessage(), PHP_EOL;
@@ -444,7 +540,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Flip\DeletedResponse**](../Model/DeletedResponse.md)
+[**\TelestreamCloudFlip\Model\DeletedResponse**](../Model/DeletedResponse.md)
 
 ### Authorization
 
@@ -458,7 +554,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **deleteVideo**
-> \TelestreamCloud\Flip\DeletedResponse deleteVideo($id, $factory_id)
+> \TelestreamCloudFlip\Model\DeletedResponse deleteVideo($id, $factory_id)
 
 Deletes a Video object.
 
@@ -468,16 +564,21 @@ Deletes a Video object.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = "id_example"; // string | Id of a Video.
 $factory_id = "factory_id_example"; // string | Id of a Factory.
 
 try {
-    $result = $api_instance->deleteVideo($id, $factory_id);
+    $result = $apiInstance->deleteVideo($id, $factory_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->deleteVideo: ', $e->getMessage(), PHP_EOL;
@@ -494,7 +595,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Flip\DeletedResponse**](../Model/DeletedResponse.md)
+[**\TelestreamCloudFlip\Model\DeletedResponse**](../Model/DeletedResponse.md)
 
 ### Authorization
 
@@ -508,7 +609,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **deleteVideoSource**
-> \TelestreamCloud\Flip\DeletedResponse deleteVideoSource($id, $factory_id)
+> \TelestreamCloudFlip\Model\DeletedResponse deleteVideoSource($id, $factory_id)
 
 Delete a video's source file.
 
@@ -518,16 +619,21 @@ Delete a video's source file.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = "id_example"; // string | Id of a Video.
 $factory_id = "factory_id_example"; // string | Id of a Factory.
 
 try {
-    $result = $api_instance->deleteVideoSource($id, $factory_id);
+    $result = $apiInstance->deleteVideoSource($id, $factory_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->deleteVideoSource: ', $e->getMessage(), PHP_EOL;
@@ -544,7 +650,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Flip\DeletedResponse**](../Model/DeletedResponse.md)
+[**\TelestreamCloudFlip\Model\DeletedResponse**](../Model/DeletedResponse.md)
 
 ### Authorization
 
@@ -558,7 +664,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **encoding**
-> \TelestreamCloud\Flip\Encoding encoding($id, $factory_id, $screenshots, $precise_status)
+> \TelestreamCloudFlip\Model\Encoding encoding($id, $factory_id, $screenshots, $precise_status)
 
 Returns an Encoding object.
 
@@ -568,18 +674,23 @@ Returns an Encoding object.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = "id_example"; // string | Id of an Encoding.
 $factory_id = "factory_id_example"; // string | Id of a Factory.
 $screenshots = true; // bool | Determines whether the response will include screenshots. By default this is not set.
 $precise_status = true; // bool | Determines whether the response will include a precise status. By default this is not set.
 
 try {
-    $result = $api_instance->encoding($id, $factory_id, $screenshots, $precise_status);
+    $result = $apiInstance->encoding($id, $factory_id, $screenshots, $precise_status);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->encoding: ', $e->getMessage(), PHP_EOL;
@@ -598,7 +709,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Flip\Encoding**](../Model/Encoding.md)
+[**\TelestreamCloudFlip\Model\Encoding**](../Model/Encoding.md)
 
 ### Authorization
 
@@ -612,7 +723,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **encodings**
-> \TelestreamCloud\Flip\PaginatedEncodingsCollection encodings($factory_id, $video_id, $status, $profile_id, $profile_name, $page, $per_page, $screenshots, $precise_status)
+> \TelestreamCloudFlip\Model\PaginatedEncodingsCollection encodings($factory_id, $video_id, $status, $profile_id, $profile_name, $page, $per_page, $screenshots, $precise_status)
 
 Returns a list of Encoding objects
 
@@ -622,11 +733,16 @@ Returns a list of Encoding objects
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $factory_id = "factory_id_example"; // string | Id of a Factory.
 $video_id = "video_id_example"; // string | Id of a Video. When specified, the resulting list will contain videos that belong to the Video.
 $status = "status_example"; // string | One of `success`, `fail`, `processing`. When specified, the resulting list will contain ecodings filtered by status.
@@ -638,7 +754,7 @@ $screenshots = true; // bool | Determines whether the response will include scre
 $precise_status = true; // bool | Determines whether the response will include a precise status. By default this is not set.
 
 try {
-    $result = $api_instance->encodings($factory_id, $video_id, $status, $profile_id, $profile_name, $page, $per_page, $screenshots, $precise_status);
+    $result = $apiInstance->encodings($factory_id, $video_id, $status, $profile_id, $profile_name, $page, $per_page, $screenshots, $precise_status);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->encodings: ', $e->getMessage(), PHP_EOL;
@@ -662,7 +778,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Flip\PaginatedEncodingsCollection**](../Model/PaginatedEncodingsCollection.md)
+[**\TelestreamCloudFlip\Model\PaginatedEncodingsCollection**](../Model/PaginatedEncodingsCollection.md)
 
 ### Authorization
 
@@ -676,7 +792,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **encodingsCount**
-> \TelestreamCloud\Flip\CountResponse encodingsCount($factory_id)
+> \TelestreamCloudFlip\Model\CountResponse encodingsCount($factory_id)
 
 Returns a number of Encoding objects created using a given factory.
 
@@ -686,15 +802,20 @@ Returns a number of Encoding objects created using a given factory.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $factory_id = "factory_id_example"; // string | Id of a Factory.
 
 try {
-    $result = $api_instance->encodingsCount($factory_id);
+    $result = $apiInstance->encodingsCount($factory_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->encodingsCount: ', $e->getMessage(), PHP_EOL;
@@ -710,7 +831,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Flip\CountResponse**](../Model/CountResponse.md)
+[**\TelestreamCloudFlip\Model\CountResponse**](../Model/CountResponse.md)
 
 ### Authorization
 
@@ -724,7 +845,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **factories**
-> \TelestreamCloud\Flip\PaginatedFactoryCollection factories($page, $per_page, $with_storage_provider)
+> \TelestreamCloudFlip\Model\PaginatedFactoryCollection factories($page, $per_page, $with_storage_provider)
 
 Returns a collection of Factory objects.
 
@@ -736,17 +857,22 @@ Returns a collection of Factory objects.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $page = 56; // int | A page to be fetched. Default is `1`.
 $per_page = 56; // int | A number of results per page. Default is `100`.
 $with_storage_provider = true; // bool | if set to `true`, results will include a storage provider's id
 
 try {
-    $result = $api_instance->factories($page, $per_page, $with_storage_provider);
+    $result = $apiInstance->factories($page, $per_page, $with_storage_provider);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->factories: ', $e->getMessage(), PHP_EOL;
@@ -764,7 +890,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Flip\PaginatedFactoryCollection**](../Model/PaginatedFactoryCollection.md)
+[**\TelestreamCloudFlip\Model\PaginatedFactoryCollection**](../Model/PaginatedFactoryCollection.md)
 
 ### Authorization
 
@@ -778,7 +904,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **factory**
-> \TelestreamCloud\Flip\Factory factory($id, $with_storage_provider)
+> \TelestreamCloudFlip\Model\Factory factory($id, $with_storage_provider)
 
 Returns a Factory object.
 
@@ -790,16 +916,21 @@ Returns a Factory object.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = "id_example"; // string | id of a factory
 $with_storage_provider = true; // bool | if set to `true`, results will include a storage provider's id
 
 try {
-    $result = $api_instance->factory($id, $with_storage_provider);
+    $result = $apiInstance->factory($id, $with_storage_provider);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->factory: ', $e->getMessage(), PHP_EOL;
@@ -816,7 +947,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Flip\Factory**](../Model/Factory.md)
+[**\TelestreamCloudFlip\Model\Factory**](../Model/Factory.md)
 
 ### Authorization
 
@@ -830,7 +961,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **notifications**
-> \TelestreamCloud\Flip\CloudNotificationSettings notifications($factory_id)
+> \TelestreamCloudFlip\Model\CloudNotificationSettings notifications($factory_id)
 
 Returns a Factory's notification settings.
 
@@ -840,15 +971,20 @@ Returns a Factory's notification settings.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $factory_id = "factory_id_example"; // string | Id of a Factory.
 
 try {
-    $result = $api_instance->notifications($factory_id);
+    $result = $apiInstance->notifications($factory_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->notifications: ', $e->getMessage(), PHP_EOL;
@@ -864,7 +1000,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Flip\CloudNotificationSettings**](../Model/CloudNotificationSettings.md)
+[**\TelestreamCloudFlip\Model\CloudNotificationSettings**](../Model/CloudNotificationSettings.md)
 
 ### Authorization
 
@@ -878,7 +1014,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **profile**
-> \TelestreamCloud\Flip\Profile profile($id_or_name, $factory_id, $expand)
+> \TelestreamCloudFlip\Model\Profile profile($id_or_name, $factory_id, $expand)
 
 Returns a Profile object.
 
@@ -888,17 +1024,22 @@ Returns a Profile object.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id_or_name = "id_or_name_example"; // string | A name or an id of a Profile.
 $factory_id = "factory_id_example"; // string | Id of a Factory.
 $expand = true; // bool | If expand option is set Profile objects will contain all command parameters, even if their value is default. By default this is not set.
 
 try {
-    $result = $api_instance->profile($id_or_name, $factory_id, $expand);
+    $result = $apiInstance->profile($id_or_name, $factory_id, $expand);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->profile: ', $e->getMessage(), PHP_EOL;
@@ -916,7 +1057,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Flip\Profile**](../Model/Profile.md)
+[**\TelestreamCloudFlip\Model\Profile**](../Model/Profile.md)
 
 ### Authorization
 
@@ -930,7 +1071,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **profileEncodings**
-> \TelestreamCloud\Flip\PaginatedEncodingsCollection profileEncodings($id_or_name, $factory_id)
+> \TelestreamCloudFlip\Model\PaginatedEncodingsCollection profileEncodings($id_or_name, $factory_id)
 
 Returns a list of Encodings that belong to a Profile.
 
@@ -940,16 +1081,21 @@ Returns a list of Encodings that belong to a Profile.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id_or_name = "id_or_name_example"; // string | Id or name of a Profile.
 $factory_id = "factory_id_example"; // string | Id of a Factory.
 
 try {
-    $result = $api_instance->profileEncodings($id_or_name, $factory_id);
+    $result = $apiInstance->profileEncodings($id_or_name, $factory_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->profileEncodings: ', $e->getMessage(), PHP_EOL;
@@ -966,7 +1112,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Flip\PaginatedEncodingsCollection**](../Model/PaginatedEncodingsCollection.md)
+[**\TelestreamCloudFlip\Model\PaginatedEncodingsCollection**](../Model/PaginatedEncodingsCollection.md)
 
 ### Authorization
 
@@ -980,7 +1126,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **profiles**
-> \TelestreamCloud\Flip\PaginatedProfilesCollection profiles($factory_id, $exclude_advanced_services, $expand, $page, $per_page)
+> \TelestreamCloudFlip\Model\PaginatedProfilesCollection profiles($factory_id, $exclude_advanced_services, $expand, $page, $per_page)
 
 Returns a collection of Profile objects.
 
@@ -990,11 +1136,16 @@ Returns a collection of Profile objects.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $factory_id = "factory_id_example"; // string | Id of a Factory.
 $exclude_advanced_services = true; // bool | Determine whether exclude Advanced Services profiles from the results. By default this is not set.
 $expand = true; // bool | If expand option is set Profile objects will contain all command parameters, even if their value is default. By default this is not set.
@@ -1002,7 +1153,7 @@ $page = 56; // int | A page to be fetched. Default is `1`.
 $per_page = 56; // int | A number of results per page. Default is `100`.
 
 try {
-    $result = $api_instance->profiles($factory_id, $exclude_advanced_services, $expand, $page, $per_page);
+    $result = $apiInstance->profiles($factory_id, $exclude_advanced_services, $expand, $page, $per_page);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->profiles: ', $e->getMessage(), PHP_EOL;
@@ -1022,7 +1173,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Flip\PaginatedProfilesCollection**](../Model/PaginatedProfilesCollection.md)
+[**\TelestreamCloudFlip\Model\PaginatedProfilesCollection**](../Model/PaginatedProfilesCollection.md)
 
 ### Authorization
 
@@ -1036,7 +1187,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **queuedVideos**
-> \TelestreamCloud\Flip\PaginatedVideoCollection queuedVideos($factory_id, $page, $per_page)
+> \TelestreamCloudFlip\Model\PaginatedVideoCollection queuedVideos($factory_id, $page, $per_page)
 
 Returns a collection of Video objects queued for encoding.
 
@@ -1046,17 +1197,22 @@ Returns a collection of Video objects queued for encoding.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $factory_id = "factory_id_example"; // string | Id of a Factory.
 $page = 56; // int | A page to be fetched. Default is `1`.
 $per_page = 56; // int | A number of results per page. Default is `100`.
 
 try {
-    $result = $api_instance->queuedVideos($factory_id, $page, $per_page);
+    $result = $apiInstance->queuedVideos($factory_id, $page, $per_page);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->queuedVideos: ', $e->getMessage(), PHP_EOL;
@@ -1074,7 +1230,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Flip\PaginatedVideoCollection**](../Model/PaginatedVideoCollection.md)
+[**\TelestreamCloudFlip\Model\PaginatedVideoCollection**](../Model/PaginatedVideoCollection.md)
 
 ### Authorization
 
@@ -1100,16 +1256,21 @@ Resubmits the video to encode. Please note that this option will work only for v
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $factory_id = "factory_id_example"; // string | Id of a Factory.
-$resubmit_video_body = new \TelestreamCloud\Flip\ResubmitVideoBody(); // \TelestreamCloud\Flip\ResubmitVideoBody | 
+$resubmit_video_body = new \TelestreamCloudFlip\Model\ResubmitVideoBody(); // \TelestreamCloudFlip\Model\ResubmitVideoBody | 
 
 try {
-    $api_instance->resubmitVideo($factory_id, $resubmit_video_body);
+    $apiInstance->resubmitVideo($factory_id, $resubmit_video_body);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->resubmitVideo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1121,7 +1282,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **factory_id** | **string**| Id of a Factory. |
- **resubmit_video_body** | [**\TelestreamCloud\Flip\ResubmitVideoBody**](../Model/ResubmitVideoBody.md)|  |
+ **resubmit_video_body** | [**\TelestreamCloudFlip\Model\ResubmitVideoBody**](../Model/ResubmitVideoBody.md)|  |
 
 ### Return type
 
@@ -1139,7 +1300,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **retryEncoding**
-> \TelestreamCloud\Flip\RetriedResponse retryEncoding($id, $factory_id)
+> \TelestreamCloudFlip\Model\RetriedResponse retryEncoding($id, $factory_id)
 
 Retries a failed encoding.
 
@@ -1149,16 +1310,21 @@ Retries a failed encoding.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = "id_example"; // string | Id of an Encoding.
 $factory_id = "factory_id_example"; // string | Id of a Factory.
 
 try {
-    $result = $api_instance->retryEncoding($id, $factory_id);
+    $result = $apiInstance->retryEncoding($id, $factory_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->retryEncoding: ', $e->getMessage(), PHP_EOL;
@@ -1175,7 +1341,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Flip\RetriedResponse**](../Model/RetriedResponse.md)
+[**\TelestreamCloudFlip\Model\RetriedResponse**](../Model/RetriedResponse.md)
 
 ### Authorization
 
@@ -1189,7 +1355,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **signedEncodingUrl**
-> \TelestreamCloud\Flip\EncodingSignedUrl signedEncodingUrl($id, $factory_id)
+> \TelestreamCloudFlip\Model\EncodingSignedUrl signedEncodingUrl($id, $factory_id)
 
 Returns a signed url pointing to an Encoding.
 
@@ -1199,16 +1365,21 @@ Returns a signed url pointing to an Encoding.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = "id_example"; // string | Id of an Encoding.
 $factory_id = "factory_id_example"; // string | Id of a Factory.
 
 try {
-    $result = $api_instance->signedEncodingUrl($id, $factory_id);
+    $result = $apiInstance->signedEncodingUrl($id, $factory_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->signedEncodingUrl: ', $e->getMessage(), PHP_EOL;
@@ -1225,7 +1396,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Flip\EncodingSignedUrl**](../Model/EncodingSignedUrl.md)
+[**\TelestreamCloudFlip\Model\EncodingSignedUrl**](../Model/EncodingSignedUrl.md)
 
 ### Authorization
 
@@ -1239,7 +1410,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **signedEncodingUrls**
-> \TelestreamCloud\Flip\EncodingSignedUrls signedEncodingUrls($id, $factory_id)
+> \TelestreamCloudFlip\Model\EncodingSignedUrls signedEncodingUrls($id, $factory_id)
 
 Returns a list of signed urls pointing to an Encoding's outputs.
 
@@ -1249,16 +1420,21 @@ Returns a list of signed urls pointing to an Encoding's outputs.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = "id_example"; // string | Id of an Encoding.
 $factory_id = "factory_id_example"; // string | Id of a Factory.
 
 try {
-    $result = $api_instance->signedEncodingUrls($id, $factory_id);
+    $result = $apiInstance->signedEncodingUrls($id, $factory_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->signedEncodingUrls: ', $e->getMessage(), PHP_EOL;
@@ -1275,7 +1451,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Flip\EncodingSignedUrls**](../Model/EncodingSignedUrls.md)
+[**\TelestreamCloudFlip\Model\EncodingSignedUrls**](../Model/EncodingSignedUrls.md)
 
 ### Authorization
 
@@ -1289,7 +1465,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **signedVideoUrl**
-> \TelestreamCloud\Flip\SignedVideoUrl signedVideoUrl($id, $factory_id)
+> \TelestreamCloudFlip\Model\SignedVideoUrl signedVideoUrl($id, $factory_id)
 
 Returns a signed url pointing to a Video.
 
@@ -1299,16 +1475,21 @@ Returns a signed url pointing to a Video.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = "id_example"; // string | Id of a Video.
 $factory_id = "factory_id_example"; // string | Id of a Factory.
 
 try {
-    $result = $api_instance->signedVideoUrl($id, $factory_id);
+    $result = $apiInstance->signedVideoUrl($id, $factory_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->signedVideoUrl: ', $e->getMessage(), PHP_EOL;
@@ -1325,7 +1506,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Flip\SignedVideoUrl**](../Model/SignedVideoUrl.md)
+[**\TelestreamCloudFlip\Model\SignedVideoUrl**](../Model/SignedVideoUrl.md)
 
 ### Authorization
 
@@ -1339,7 +1520,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **toggleFactorySync**
-> \TelestreamCloud\Flip\FactorySync toggleFactorySync($id, $factory_sync_body)
+> \TelestreamCloudFlip\Model\FactorySync toggleFactorySync($id, $factory_sync_body)
 
 Toggles synchronisation settings.
 
@@ -1349,16 +1530,21 @@ Toggles synchronisation settings.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = "id_example"; // string | id of the factory
-$factory_sync_body = new \TelestreamCloud\Flip\FactorySyncBody(); // \TelestreamCloud\Flip\FactorySyncBody | 
+$factory_sync_body = new \TelestreamCloudFlip\Model\FactorySyncBody(); // \TelestreamCloudFlip\Model\FactorySyncBody | 
 
 try {
-    $result = $api_instance->toggleFactorySync($id, $factory_sync_body);
+    $result = $apiInstance->toggleFactorySync($id, $factory_sync_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->toggleFactorySync: ', $e->getMessage(), PHP_EOL;
@@ -1371,11 +1557,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| id of the factory |
- **factory_sync_body** | [**\TelestreamCloud\Flip\FactorySyncBody**](../Model/FactorySyncBody.md)|  |
+ **factory_sync_body** | [**\TelestreamCloudFlip\Model\FactorySyncBody**](../Model/FactorySyncBody.md)|  |
 
 ### Return type
 
-[**\TelestreamCloud\Flip\FactorySync**](../Model/FactorySync.md)
+[**\TelestreamCloudFlip\Model\FactorySync**](../Model/FactorySync.md)
 
 ### Authorization
 
@@ -1389,7 +1575,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateEncoding**
-> \TelestreamCloud\Flip\Encoding updateEncoding($id, $factory_id, $update_encoding_body, $screenshots, $precise_status)
+> \TelestreamCloudFlip\Model\Encoding updateEncoding($id, $factory_id, $update_encoding_body, $screenshots, $precise_status)
 
 Updates an Encoding
 
@@ -1399,19 +1585,24 @@ Updates an Encoding
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = "id_example"; // string | Id of an Encoding.
 $factory_id = "factory_id_example"; // string | Id of a Factory.
-$update_encoding_body = new \TelestreamCloud\Flip\UpdateEncodingBody(); // \TelestreamCloud\Flip\UpdateEncodingBody | 
+$update_encoding_body = new \TelestreamCloudFlip\Model\UpdateEncodingBody(); // \TelestreamCloudFlip\Model\UpdateEncodingBody | 
 $screenshots = true; // bool | Determines whether the response will include screenshots. By default this is not set.
 $precise_status = true; // bool | Determines whether the response will include a precise status. By default this is not set.
 
 try {
-    $result = $api_instance->updateEncoding($id, $factory_id, $update_encoding_body, $screenshots, $precise_status);
+    $result = $apiInstance->updateEncoding($id, $factory_id, $update_encoding_body, $screenshots, $precise_status);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->updateEncoding: ', $e->getMessage(), PHP_EOL;
@@ -1425,13 +1616,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| Id of an Encoding. |
  **factory_id** | **string**| Id of a Factory. |
- **update_encoding_body** | [**\TelestreamCloud\Flip\UpdateEncodingBody**](../Model/UpdateEncodingBody.md)|  |
+ **update_encoding_body** | [**\TelestreamCloudFlip\Model\UpdateEncodingBody**](../Model/UpdateEncodingBody.md)|  |
  **screenshots** | **bool**| Determines whether the response will include screenshots. By default this is not set. | [optional]
  **precise_status** | **bool**| Determines whether the response will include a precise status. By default this is not set. | [optional]
 
 ### Return type
 
-[**\TelestreamCloud\Flip\Encoding**](../Model/Encoding.md)
+[**\TelestreamCloudFlip\Model\Encoding**](../Model/Encoding.md)
 
 ### Authorization
 
@@ -1445,7 +1636,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateFactory**
-> \TelestreamCloud\Flip\Factory updateFactory($id, $update_factory_body, $with_storage_provider)
+> \TelestreamCloudFlip\Model\Factory updateFactory($id, $update_factory_body, $with_storage_provider)
 
 Updates a Factory's settings. Returns a Factory object.
 
@@ -1455,17 +1646,22 @@ Updates a Factory's settings. Returns a Factory object.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = "id_example"; // string | id of the factory
-$update_factory_body = new \TelestreamCloud\Flip\FactoryBody(); // \TelestreamCloud\Flip\FactoryBody | 
+$update_factory_body = new \TelestreamCloudFlip\Model\FactoryBody(); // \TelestreamCloudFlip\Model\FactoryBody | 
 $with_storage_provider = true; // bool | if set to `true`, results will include a storage provider's id
 
 try {
-    $result = $api_instance->updateFactory($id, $update_factory_body, $with_storage_provider);
+    $result = $apiInstance->updateFactory($id, $update_factory_body, $with_storage_provider);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->updateFactory: ', $e->getMessage(), PHP_EOL;
@@ -1478,12 +1674,12 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| id of the factory |
- **update_factory_body** | [**\TelestreamCloud\Flip\FactoryBody**](../Model/FactoryBody.md)|  |
+ **update_factory_body** | [**\TelestreamCloudFlip\Model\FactoryBody**](../Model/FactoryBody.md)|  |
  **with_storage_provider** | **bool**| if set to &#x60;true&#x60;, results will include a storage provider&#39;s id | [optional]
 
 ### Return type
 
-[**\TelestreamCloud\Flip\Factory**](../Model/Factory.md)
+[**\TelestreamCloudFlip\Model\Factory**](../Model/Factory.md)
 
 ### Authorization
 
@@ -1497,7 +1693,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateNotifications**
-> \TelestreamCloud\Flip\CloudNotificationSettings updateNotifications($factory_id, $cloud_notification_settings_body)
+> \TelestreamCloudFlip\Model\CloudNotificationSettings updateNotifications($factory_id, $cloud_notification_settings_body)
 
 Updates a Factory's notification settings.
 
@@ -1507,16 +1703,21 @@ Updates a Factory's notification settings.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $factory_id = "factory_id_example"; // string | Id of a Factory.
-$cloud_notification_settings_body = new \TelestreamCloud\Flip\CloudNotificationSettings(); // \TelestreamCloud\Flip\CloudNotificationSettings | 
+$cloud_notification_settings_body = new \TelestreamCloudFlip\Model\CloudNotificationSettings(); // \TelestreamCloudFlip\Model\CloudNotificationSettings | 
 
 try {
-    $result = $api_instance->updateNotifications($factory_id, $cloud_notification_settings_body);
+    $result = $apiInstance->updateNotifications($factory_id, $cloud_notification_settings_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->updateNotifications: ', $e->getMessage(), PHP_EOL;
@@ -1529,11 +1730,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **factory_id** | **string**| Id of a Factory. |
- **cloud_notification_settings_body** | [**\TelestreamCloud\Flip\CloudNotificationSettings**](../Model/CloudNotificationSettings.md)|  |
+ **cloud_notification_settings_body** | [**\TelestreamCloudFlip\Model\CloudNotificationSettings**](../Model/CloudNotificationSettings.md)|  |
 
 ### Return type
 
-[**\TelestreamCloud\Flip\CloudNotificationSettings**](../Model/CloudNotificationSettings.md)
+[**\TelestreamCloudFlip\Model\CloudNotificationSettings**](../Model/CloudNotificationSettings.md)
 
 ### Authorization
 
@@ -1547,7 +1748,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateProfile**
-> \TelestreamCloud\Flip\Profile updateProfile($id, $factory_id, $update_profile_body, $exclude_advanced_services, $expand)
+> \TelestreamCloudFlip\Model\Profile updateProfile($id, $factory_id, $update_profile_body, $exclude_advanced_services, $expand)
 
 Updates a given Profile
 
@@ -1557,19 +1758,24 @@ Updates a given Profile
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = "id_example"; // string | 
 $factory_id = "factory_id_example"; // string | Id of a Factory.
-$update_profile_body = new \TelestreamCloud\Flip\ProfileBody(); // \TelestreamCloud\Flip\ProfileBody | 
+$update_profile_body = new \TelestreamCloudFlip\Model\ProfileBody(); // \TelestreamCloudFlip\Model\ProfileBody | 
 $exclude_advanced_services = true; // bool | 
 $expand = true; // bool | If expand option is set Profile objects will contain all command parameters, even if their value is default. By default this is not set.
 
 try {
-    $result = $api_instance->updateProfile($id, $factory_id, $update_profile_body, $exclude_advanced_services, $expand);
+    $result = $apiInstance->updateProfile($id, $factory_id, $update_profile_body, $exclude_advanced_services, $expand);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->updateProfile: ', $e->getMessage(), PHP_EOL;
@@ -1583,13 +1789,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  |
  **factory_id** | **string**| Id of a Factory. |
- **update_profile_body** | [**\TelestreamCloud\Flip\ProfileBody**](../Model/ProfileBody.md)|  |
+ **update_profile_body** | [**\TelestreamCloudFlip\Model\ProfileBody**](../Model/ProfileBody.md)|  |
  **exclude_advanced_services** | **bool**|  | [optional]
  **expand** | **bool**| If expand option is set Profile objects will contain all command parameters, even if their value is default. By default this is not set. | [optional]
 
 ### Return type
 
-[**\TelestreamCloud\Flip\Profile**](../Model/Profile.md)
+[**\TelestreamCloudFlip\Model\Profile**](../Model/Profile.md)
 
 ### Authorization
 
@@ -1603,7 +1809,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **uploadVideo**
-> \TelestreamCloud\Flip\UploadSession uploadVideo($factory_id, $video_upload_body)
+> \TelestreamCloudFlip\Model\UploadSession uploadVideo($factory_id, $video_upload_body)
 
 Creates an upload session.
 
@@ -1613,16 +1819,21 @@ Creates an upload session.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $factory_id = "factory_id_example"; // string | Id of a Factory.
-$video_upload_body = new \TelestreamCloud\Flip\VideoUploadBody(); // \TelestreamCloud\Flip\VideoUploadBody | 
+$video_upload_body = new \TelestreamCloudFlip\Model\VideoUploadBody(); // \TelestreamCloudFlip\Model\VideoUploadBody | 
 
 try {
-    $result = $api_instance->uploadVideo($factory_id, $video_upload_body);
+    $result = $apiInstance->uploadVideo($factory_id, $video_upload_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->uploadVideo: ', $e->getMessage(), PHP_EOL;
@@ -1635,11 +1846,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **factory_id** | **string**| Id of a Factory. |
- **video_upload_body** | [**\TelestreamCloud\Flip\VideoUploadBody**](../Model/VideoUploadBody.md)|  |
+ **video_upload_body** | [**\TelestreamCloudFlip\Model\VideoUploadBody**](../Model/VideoUploadBody.md)|  |
 
 ### Return type
 
-[**\TelestreamCloud\Flip\UploadSession**](../Model/UploadSession.md)
+[**\TelestreamCloudFlip\Model\UploadSession**](../Model/UploadSession.md)
 
 ### Authorization
 
@@ -1653,7 +1864,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **video**
-> \TelestreamCloud\Flip\Video video($id, $factory_id)
+> \TelestreamCloudFlip\Model\Video video($id, $factory_id)
 
 Returns a Video object.
 
@@ -1663,16 +1874,21 @@ Returns a Video object.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = "id_example"; // string | Id of a Video.
 $factory_id = "factory_id_example"; // string | Id of a Factory.
 
 try {
-    $result = $api_instance->video($id, $factory_id);
+    $result = $apiInstance->video($id, $factory_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->video: ', $e->getMessage(), PHP_EOL;
@@ -1689,7 +1905,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Flip\Video**](../Model/Video.md)
+[**\TelestreamCloudFlip\Model\Video**](../Model/Video.md)
 
 ### Authorization
 
@@ -1703,7 +1919,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **videoEncodings**
-> \TelestreamCloud\Flip\PaginatedEncodingsCollection videoEncodings($id, $factory_id, $page, $per_page, $screenshots, $precise_status)
+> \TelestreamCloudFlip\Model\PaginatedEncodingsCollection videoEncodings($id, $factory_id, $page, $per_page, $screenshots, $precise_status)
 
 Returns a list of Encodings that belong to a Video.
 
@@ -1713,11 +1929,16 @@ Returns a list of Encodings that belong to a Video.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = "id_example"; // string | Id of a Video.
 $factory_id = "factory_id_example"; // string | Id of a Factory.
 $page = 56; // int | A page to be fetched. Default is `1`.
@@ -1726,7 +1947,7 @@ $screenshots = true; // bool | Determines whether the response will include scre
 $precise_status = true; // bool | Determines whether the response will include a precise status. By default this is not set.
 
 try {
-    $result = $api_instance->videoEncodings($id, $factory_id, $page, $per_page, $screenshots, $precise_status);
+    $result = $apiInstance->videoEncodings($id, $factory_id, $page, $per_page, $screenshots, $precise_status);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->videoEncodings: ', $e->getMessage(), PHP_EOL;
@@ -1747,7 +1968,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Flip\PaginatedEncodingsCollection**](../Model/PaginatedEncodingsCollection.md)
+[**\TelestreamCloudFlip\Model\PaginatedEncodingsCollection**](../Model/PaginatedEncodingsCollection.md)
 
 ### Authorization
 
@@ -1761,7 +1982,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **videoMetadata**
-> \TelestreamCloud\Flip\VideoMetadata videoMetadata($id, $factory_id)
+> \TelestreamCloudFlip\Model\VideoMetadata videoMetadata($id, $factory_id)
 
 Returns a Video's metadata
 
@@ -1771,16 +1992,21 @@ Returns a Video's metadata
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = "id_example"; // string | Id of a Video.
 $factory_id = "factory_id_example"; // string | Id of a Factory.
 
 try {
-    $result = $api_instance->videoMetadata($id, $factory_id);
+    $result = $apiInstance->videoMetadata($id, $factory_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->videoMetadata: ', $e->getMessage(), PHP_EOL;
@@ -1797,7 +2023,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Flip\VideoMetadata**](../Model/VideoMetadata.md)
+[**\TelestreamCloudFlip\Model\VideoMetadata**](../Model/VideoMetadata.md)
 
 ### Authorization
 
@@ -1811,7 +2037,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **videos**
-> \TelestreamCloud\Flip\PaginatedVideoCollection videos($factory_id, $page, $per_page)
+> \TelestreamCloudFlip\Model\PaginatedVideoCollection videos($factory_id, $page, $per_page)
 
 Returns a collection of Video objects.
 
@@ -1821,17 +2047,22 @@ Returns a collection of Video objects.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $factory_id = "factory_id_example"; // string | Id of a Factory.
 $page = 56; // int | A page to be fetched. Default is `1`.
 $per_page = 56; // int | A number of results per page. Default is `100`.
 
 try {
-    $result = $api_instance->videos($factory_id, $page, $per_page);
+    $result = $apiInstance->videos($factory_id, $page, $per_page);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->videos: ', $e->getMessage(), PHP_EOL;
@@ -1849,7 +2080,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Flip\PaginatedVideoCollection**](../Model/PaginatedVideoCollection.md)
+[**\TelestreamCloudFlip\Model\PaginatedVideoCollection**](../Model/PaginatedVideoCollection.md)
 
 ### Authorization
 
@@ -1863,7 +2094,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **workflows**
-> \TelestreamCloud\Flip\PaginatedWorkflowsCollection workflows($factory_id, $page, $per_page)
+> \TelestreamCloudFlip\Model\PaginatedWorkflowsCollection workflows($factory_id, $page, $per_page)
 
 Returns a collection of Workflows that belong to a Factory.
 
@@ -1873,17 +2104,22 @@ Returns a collection of Workflows that belong to a Factory.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// TelestreamCloud\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+// $config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
 
-$api_instance = new TelestreamCloud\Api\FlipApi();
+$apiInstance = new TelestreamCloudFlip\Api\FlipApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $factory_id = "factory_id_example"; // string | Id of a Factory.
 $page = 56; // int | A page to be fetched. Default is `1`.
 $per_page = 56; // int | A number of results per page. Default is `100`.
 
 try {
-    $result = $api_instance->workflows($factory_id, $page, $per_page);
+    $result = $apiInstance->workflows($factory_id, $page, $per_page);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlipApi->workflows: ', $e->getMessage(), PHP_EOL;
@@ -1901,7 +2137,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\TelestreamCloud\Flip\PaginatedWorkflowsCollection**](../Model/PaginatedWorkflowsCollection.md)
+[**\TelestreamCloudFlip\Model\PaginatedWorkflowsCollection**](../Model/PaginatedWorkflowsCollection.md)
 
 ### Authorization
 

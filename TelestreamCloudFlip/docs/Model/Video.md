@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **mime_type** | **string** | A mime type of the source file. | [optional] 
 **original_filename** | **string** | A name of the source file. | [optional] 
 **path** | **string** |  | [optional] 
-**payload** | **string** |  | [optional] 
+**payload** | **string** | Payload is an arbitrary text of length 256 or shorter that you can store along the Video. It is typically used to retain an association with one of your own DB record ID. | [optional] 
 **source_url** | **string** | An URL pointing to the source file. | [optional] 
 **status** | **string** | Determines at what stage of importing process the Video is at the moment. | [optional] 
 **updated_at** | **string** | A date and time when a Video has been updated last time. | [optional] 

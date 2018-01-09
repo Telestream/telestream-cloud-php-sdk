@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**encodings** | [**\TelestreamCloud\Flip\Encoding[]**](Encoding.md) |  | 
+**encodings** | [**\TelestreamCloudFlip\Model\Encoding[]**](Encoding.md) |  | 
 **page** | **int** | A number of the fetched page. | 
 **per_page** | **int** | A number of encodings per page. | 
 **total** | **int** | A number of all encodings stored in the db. | 

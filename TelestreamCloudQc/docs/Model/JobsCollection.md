@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**jobs** | [**\TelestreamCloud\Qc\Job[]**](Job.md) |  | [optional] 
+**jobs** | [**\TelestreamCloudQc\Model\Job[]**](Job.md) |  | [optional] 
 **page** | **int** | A number of the fetched page. | [optional] 
 **per_page** | **int** | A number of jobs per page. | [optional] 
 **page_count** | **int** | A number of all pages. | [optional] 

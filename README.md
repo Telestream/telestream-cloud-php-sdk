@@ -5,27 +5,66 @@
 In order to use TCS api client first you need to get `ApiKey`. Login to [website](https://cloud.telestream.net/console), go to *Flip* service and open *API Access* tab.
 You account will be identified by unique *Api Key*, if it is unavailable click *Reset* button.
 
+
+### Installation
+
+
+#### Composer
+
+To install the bindings via [Composer](http://getcomposer.org/), add the following to `composer.json`:
+
+```
+{
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/telestream/telestream-cloud-php-sdk.git"
+    }
+  ],
+  "require": {
+    "telestream/telestream-cloud-php-sdk": "*@dev"
+  }
+}
+```
+
+Then run `composer install`
+
+
+#### Manual Installation
+
+Download the files and include `autoload.php`:
+
+```php
+    require_once('/path/to/TelestreamCloudTts/vendor/autoload.php');
+```
+
 ### Usage
 This example show uploading media file to flip service. If you want to use other service refer to [services](#services).
 
-    require_once(__DIR__ . '/TelestreamCloudFlip/autoload.php');
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
 
-    TelestreamCloud\Configuration::getDefaultconfiguration()->setApiKey('X-Api-Key', 'tcs_xxxxxxxxx');
+$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'tcs_xxxxxxxxx');
 
-    $factory = 'tg01xxxxxxxxxxxxxxxxxxxx';
+$factory = 'tg01xxxxxxxxxxxxxxxxxxxx';
 
-    try {
-        api = new TelestreamCloud\Flip\FlipApi();
-        $upload = new TelestreamCloud\Flip\Uploader($api, array(
-            'factory_id' => $factory,
-            'file' => '/tmp/video.mp4',
-            'extra_files' => array(),
-        ));
+try {
+    $api = new TelestreamCloudFlip\Api\FlipApi(new GuzzleHttp\Client(), $config);
 
-        $video_id = $upload->upload();
-    } catch(Exception $e) {
-        // Handle exception
-    }
+    $upload = new TelestreamCloudFlip\Uploader($api, array(
+        'factory_id' => $factory,
+        'file' => '/tmp/video.mp4',
+        'extra_files' => array(),
+    ));
+
+    $video_id = $upload->upload();
+    echo $video_id;
+} catch(Exception $e) {
+    // Handle exception
+}
+?>
+```
 
 ## Services
 Api client is divided into parts corresponding to services provided. Currently supported services include:

@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflows** | [**\TelestreamCloud\Flip\Profile[]**](Profile.md) |  | [optional] 
+**workflows** | [**\TelestreamCloudFlip\Model\Profile[]**](Profile.md) |  | [optional] 
 **page** | **int** | A number of the fetched page. | [optional] 
 **per_page** | **int** | A number of factories per page. | [optional] 
 **total** | **int** | A number of all factories stored in the db. | [optional] 
