@@ -35,35 +35,7 @@ Then run `composer install`
 Download the files and include `autoload.php`:
 
 ```php
-    require_once('/path/to/TelestreamCloudTts/vendor/autoload.php');
-```
-
-### Usage
-This example show uploading media file to flip service. If you want to use other service refer to [services](#services).
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-$config = TelestreamCloudFlip\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'tcs_xxxxxxxxx');
-
-$factory = 'tg01xxxxxxxxxxxxxxxxxxxx';
-
-try {
-    $api = new TelestreamCloudFlip\Api\FlipApi(new GuzzleHttp\Client(), $config);
-
-    $upload = new TelestreamCloudFlip\Uploader($api, array(
-        'factory_id' => $factory,
-        'file' => '/tmp/video.mp4',
-        'extra_files' => array(),
-    ));
-
-    $video_id = $upload->upload();
-    echo $video_id;
-} catch(Exception $e) {
-    // Handle exception
-}
-?>
+    require_once('/path/to/service/vendor/autoload.php');
 ```
 
 ## Services

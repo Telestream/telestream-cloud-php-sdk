@@ -290,7 +290,7 @@ class CreateVideoBody implements ModelInterface, ArrayAccess
     /**
      * Sets payload
      *
-     * @param string $payload Payload is an arbitrary text of length 256 or shorter that you can store along the Video. It is typically used to retain an association with one of your own DB record ID.
+     * @param string $payload Arbitrary string stored along the Video object.
      *
      * @return $this
      */
