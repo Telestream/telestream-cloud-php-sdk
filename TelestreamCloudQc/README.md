@@ -26,6 +26,7 @@ Class | Method | HTTP request | Description
 *QcApi* | [**removeJob**](docs/Api/QcApi.md#removejob) | **DELETE** /projects/{project_id}/jobs/{job_id}.json | 
 *QcApi* | [**removeProject**](docs/Api/QcApi.md#removeproject) | **DELETE** /projects/{project_id}.json | 
 *QcApi* | [**signedUrls**](docs/Api/QcApi.md#signedurls) | **GET** /projects/{project_id}/jobs/{job_id}/signed-urls.json | 
+*QcApi* | [**templates**](docs/Api/QcApi.md#templates) | **GET** /templates.json | List all templates
 *QcApi* | [**uploadVideo**](docs/Api/QcApi.md#uploadvideo) | **POST** /projects/{project_id}/upload.json | Creates an upload session
 
 
@@ -46,6 +47,7 @@ Class | Method | HTTP request | Description
  - [Options](docs/Model/Options.md)
  - [Project](docs/Model/Project.md)
  - [Proxy](docs/Model/Proxy.md)
+ - [Template](docs/Model/Template.md)
  - [UploadSession](docs/Model/UploadSession.md)
  - [VideoStream](docs/Model/VideoStream.md)
  - [VideoUploadBody](docs/Model/VideoUploadBody.md)
@@ -54,7 +56,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Authorization
 
 
-## apiKey
+## api_key
 
 - **Type**: API key
 - **API key parameter name**: X-Api-Key

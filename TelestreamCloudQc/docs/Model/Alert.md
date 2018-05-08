@@ -5,8 +5,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **level** | **string** |  | [optional] 
 **info** | **string** | Extra information for an alert. | [optional] 
-**begin** | **string** | Start time of alert. | [optional] 
-**end** | **string** | End time of alert. | [optional] 
+**begin** | **float** | Start time of alert. | [optional] 
+**end** | **float** | End time of alert. | [optional] 
 **stream** | **int** |  | [optional] 
 **detail** | **string** |  | [optional] 
 

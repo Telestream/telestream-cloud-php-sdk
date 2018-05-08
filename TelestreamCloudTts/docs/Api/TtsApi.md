@@ -10,10 +10,10 @@ Method | HTTP request | Description
 [**createJob**](TtsApi.md#createJob) | **POST** /projects/{projectID}/jobs | Creates a new Job
 [**createProject**](TtsApi.md#createProject) | **POST** /projects | Creates a new Project
 [**deleteCorpus**](TtsApi.md#deleteCorpus) | **DELETE** /projects/{projectID}/corpora/{name} | Creates a new Corpus
-[**deleteJob**](TtsApi.md#deleteJob) | **DELETE** /projects/{projectID}/jobs/{id} | Deletes the Job
+[**deleteJob**](TtsApi.md#deleteJob) | **DELETE** /projects/{projectID}/jobs/{jobID} | Deletes the Job
 [**deleteProject**](TtsApi.md#deleteProject) | **DELETE** /projects/{projectID} | Deletes the Project
-[**job**](TtsApi.md#job) | **GET** /projects/{projectID}/jobs/{id} | Returns the Job
-[**jobResult**](TtsApi.md#jobResult) | **GET** /projects/{projectID}/jobs/{id}/result | Returns the Job Result
+[**job**](TtsApi.md#job) | **GET** /projects/{projectID}/jobs/{jobID} | Returns the Job
+[**jobResult**](TtsApi.md#jobResult) | **GET** /projects/{projectID}/jobs/{jobID}/result | Returns the Job Result
 [**jobs**](TtsApi.md#jobs) | **GET** /projects/{projectID}/jobs | Returns a collection of Jobs
 [**project**](TtsApi.md#project) | **GET** /projects/{projectID} | Returns the Project
 [**projects**](TtsApi.md#projects) | **GET** /projects | Returns a collection of Projects
@@ -34,7 +34,7 @@ Returns a collection of Corpora
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -89,7 +89,7 @@ Returns the Corpus
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -146,7 +146,7 @@ Creates a new Corpus
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -183,7 +183,7 @@ void (empty response body)
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -204,7 +204,7 @@ Creates a new Job
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -261,7 +261,7 @@ Creates a new Project
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -316,7 +316,7 @@ Creates a new Corpus
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -351,7 +351,7 @@ void (empty response body)
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -372,7 +372,7 @@ Deletes the Job
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -407,7 +407,7 @@ void (empty response body)
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -428,7 +428,7 @@ Deletes the Project
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -457,7 +457,7 @@ void (empty response body)
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -478,7 +478,7 @@ Returns the Job
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -514,7 +514,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -535,7 +535,7 @@ Returns the Job Result
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -571,7 +571,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -592,7 +592,7 @@ Returns a collection of Jobs
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -630,7 +630,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -651,7 +651,7 @@ Returns the Project
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -685,7 +685,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -706,7 +706,7 @@ Returns a collection of Projects
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -736,7 +736,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -757,7 +757,7 @@ Queues training
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -790,7 +790,7 @@ void (empty response body)
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -811,7 +811,7 @@ Updates an existing Project
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -845,7 +845,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -864,7 +864,7 @@ Creates an upload session
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudTts\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -900,7 +900,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 

@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**removeJob**](QcApi.md#removeJob) | **DELETE** /projects/{project_id}/jobs/{job_id}.json | 
 [**removeProject**](QcApi.md#removeProject) | **DELETE** /projects/{project_id}.json | 
 [**signedUrls**](QcApi.md#signedUrls) | **GET** /projects/{project_id}/jobs/{job_id}/signed-urls.json | 
+[**templates**](QcApi.md#templates) | **GET** /templates.json | List all templates
 [**uploadVideo**](QcApi.md#uploadVideo) | **POST** /projects/{project_id}/upload.json | Creates an upload session
 
 
@@ -29,7 +30,7 @@ Method | HTTP request | Description
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -64,7 +65,7 @@ void (empty response body)
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -83,7 +84,7 @@ Create a new job
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -119,7 +120,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -138,7 +139,7 @@ Create a new project
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -172,7 +173,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -191,7 +192,7 @@ Get QC job
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -227,7 +228,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -246,7 +247,7 @@ Get project by Id
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -280,7 +281,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -299,7 +300,7 @@ Get jobs form projects
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -341,7 +342,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -360,7 +361,7 @@ List all projects for an account
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -390,7 +391,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -409,7 +410,7 @@ Modify project
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -445,7 +446,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -464,7 +465,7 @@ Name | Type | Description  | Notes
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -500,7 +501,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -519,7 +520,7 @@ Name | Type | Description  | Notes
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -554,7 +555,7 @@ void (empty response body)
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -573,7 +574,7 @@ void (empty response body)
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -606,7 +607,7 @@ void (empty response body)
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -625,7 +626,7 @@ void (empty response body)
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -661,7 +662,56 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **templates**
+> \TelestreamCloudQc\Model\Template[] templates()
+
+List all templates
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: api_key
+$config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
+
+$apiInstance = new TelestreamCloudQc\Api\QcApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->templates();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling QcApi->templates: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\TelestreamCloudQc\Model\Template[]**](../Model/Template.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -680,7 +730,7 @@ Creates an upload session
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: apiKey
+// Configure API key authorization: api_key
 $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKey('X-Api-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = TelestreamCloudQc\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Api-Key', 'Bearer');
@@ -716,7 +766,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[apiKey](../../README.md#apiKey)
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 

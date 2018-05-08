@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**duration** | **int** | Video stream duration measured in seconds. | [optional] 
+**duration** | **float** | Video stream duration measured in seconds. | [optional] 
 **codec** | **string** |  | [optional] 
 **width** | **int** |  | [optional] 
 **height** | **int** |  | [optional] 

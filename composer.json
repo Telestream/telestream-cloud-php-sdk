@@ -29,16 +29,18 @@
   },
   "autoload": {
     "psr-4": {
-      "TelestreamCloudFlip\\" : "TelestreamCloudFlip/lib/",
-      "TelestreamCloudQc\\" : "TelestreamCloudQc/lib/",
-      "TelestreamCloudTts\\" : "TelestreamCloudTts/lib/"
+        "TelestreamCloudFlip\\" : "TelestreamCloudFlip/lib/",
+        "TelestreamCloudQc\\" : "TelestreamCloudQc/lib/",
+        "TelestreamCloudTts\\" : "TelestreamCloudTts/lib/",
+        "TelestreamCloudNotifications\\" : "TelestreamCloudNotifications/lib/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "TelestreamCloudFlip\\" : "TelestreamCloudFlip/test/",
-      "TelestreamCloudQc\\" : "TelestreamCloudQc/test/",
-      "TelestreamCloudTts\\" : "TelestreamCloudTts/test/"
+        "TelestreamCloudFlip\\" : "TelestreamCloudFlip/test/",
+        "TelestreamCloudQc\\" : "TelestreamCloudQc/test/",
+        "TelestreamCloudTts\\" : "TelestreamCloudTts/test/",
+        "TelestreamCloudNotifications\\" : "TelestreamCloudNotifications/test/"
     }
   }
 }

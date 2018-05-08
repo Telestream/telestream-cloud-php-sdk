@@ -75,10 +75,10 @@ Class | Method | HTTP request | Description
 *TtsApi* | [**createJob**](docs/Api/TtsApi.md#createjob) | **POST** /projects/{projectID}/jobs | Creates a new Job
 *TtsApi* | [**createProject**](docs/Api/TtsApi.md#createproject) | **POST** /projects | Creates a new Project
 *TtsApi* | [**deleteCorpus**](docs/Api/TtsApi.md#deletecorpus) | **DELETE** /projects/{projectID}/corpora/{name} | Creates a new Corpus
-*TtsApi* | [**deleteJob**](docs/Api/TtsApi.md#deletejob) | **DELETE** /projects/{projectID}/jobs/{id} | Deletes the Job
+*TtsApi* | [**deleteJob**](docs/Api/TtsApi.md#deletejob) | **DELETE** /projects/{projectID}/jobs/{jobID} | Deletes the Job
 *TtsApi* | [**deleteProject**](docs/Api/TtsApi.md#deleteproject) | **DELETE** /projects/{projectID} | Deletes the Project
-*TtsApi* | [**job**](docs/Api/TtsApi.md#job) | **GET** /projects/{projectID}/jobs/{id} | Returns the Job
-*TtsApi* | [**jobResult**](docs/Api/TtsApi.md#jobresult) | **GET** /projects/{projectID}/jobs/{id}/result | Returns the Job Result
+*TtsApi* | [**job**](docs/Api/TtsApi.md#job) | **GET** /projects/{projectID}/jobs/{jobID} | Returns the Job
+*TtsApi* | [**jobResult**](docs/Api/TtsApi.md#jobresult) | **GET** /projects/{projectID}/jobs/{jobID}/result | Returns the Job Result
 *TtsApi* | [**jobs**](docs/Api/TtsApi.md#jobs) | **GET** /projects/{projectID}/jobs | Returns a collection of Jobs
 *TtsApi* | [**project**](docs/Api/TtsApi.md#project) | **GET** /projects/{projectID} | Returns the Project
 *TtsApi* | [**projects**](docs/Api/TtsApi.md#projects) | **GET** /projects | Returns a collection of Projects
@@ -108,7 +108,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Authorization
 
 
-## apiKey
+## api_key
 
 - **Type**: API key
 - **API key parameter name**: X-Api-Key

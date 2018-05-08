@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **bitrate** | **int** | The bitrate of the input audio. | [optional] 
 **sample_rate** | **int** | The sample rate of the input audio. | [optional] 
 **format** | **string** | The format of the input audio. | [optional] 
-**file_size** | **string** | The file size of the input file. | [optional] 
+**file_size** | **int** | The file size of the input file. | [optional] 
 **created_at** | **string** | A date and time when the job was created | [optional] 
 **updated_at** | **string** | A date and time when the job was updated | [optional] 
 
